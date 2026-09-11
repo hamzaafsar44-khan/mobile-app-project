@@ -17,10 +17,11 @@ mySeedColor = Colors.amber
 - Added my name and roll number.
 
 ## Screenshot
-
 ## Screenshot
 
-![Project Screenshot](project-screenshot.png)
+![Project Screenshot](./Screenshot%202026-09-11%20161127.png)
+## Screenshot
+
 
 ## Reflection
 
