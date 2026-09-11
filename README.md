@@ -18,7 +18,9 @@ mySeedColor = Colors.amber
 
 ## Screenshot
 
-![Project Screenshot](Screenshot-2026-09-11-161127.png)
+## Screenshot
+
+![Project Screenshot](project-screenshot.png)
 
 ## Reflection
 
