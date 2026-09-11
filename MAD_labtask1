@@ -1,0 +1,151 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+/*
+Personal Parameters:
+myThreshold = 6
+mySeedColor = Colors.amber
+*/
+
+const int myThreshold = 6;
+const Color mySeedColor = Colors.amber;
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+
+      theme: ThemeData(
+        colorSchemeSeed: mySeedColor,
+        useMaterial3: true,
+      ),
+
+      home: const MyHomePage(
+        title: 'CS 442 MAD Hot Relaod Demo',
+      ),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  // Counter state
+  int _counter = 0;
+
+  // Tracks number of resets
+  int _resetCount = 0;
+
+  // Increment button
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  // Reset button
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+
+    setState(() {
+      _resetCount++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+
+      appBar: AppBar(
+        backgroundColor:
+            Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: [
+
+            const Text(
+              'Times you Pushed the :',
+            ),
+
+            // Counter number
+            Text(
+              '$_counter',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium,
+            ),
+
+            // Threshold message
+            if (_counter > myThreshold)
+              const Text(
+                "You're on a roll!",
+                style: TextStyle(
+                  color: Colors.green,
+                ),
+              ),
+
+            const SizedBox(height: 10),
+
+            // Reset tracker
+            Text(
+              'Resets used: $_resetCount',
+            ),
+
+            const SizedBox(height: 30),
+
+            // About line
+            const Text(
+              'Built by Hamza A · 04072313001',
+            ),
+          ],
+        ),
+      ),
+
+      // Two Floating Action Buttons
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+
+        children: [
+
+          // Reset button
+          FloatingActionButton(
+            onPressed: _resetCounter,
+            tooltip: 'Reset',
+            child: const Icon(Icons.refresh),
+          ),
+
+          const SizedBox(width: 10),
+
+          // Increment button
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+        ],
+      ),
+    );
+  }
+}
